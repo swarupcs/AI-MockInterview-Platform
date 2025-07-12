@@ -36,7 +36,7 @@ export function TextInterviewPage() {
     <div className='flex min-h-screen flex-col'>
       {/* Simple Header */}
       <header className='border-b bg-white'>
-        <div className='container flex h-16 items-center justify-between'>
+        <div className='container mx-auto flex h-16 items-center justify-between'>
           <div className='flex items-center gap-4'>
             <Button
               variant='ghost'
@@ -60,24 +60,28 @@ export function TextInterviewPage() {
         </div>
       </header>
 
-      <main className='flex-1 bg-gray-50'>
-        {phase === 'setup' && <InterviewSetup onStart={handleStartInterview} />}
+      <main className='flex-1 bg-gray-50 flex flex-col items-center justify-center'>
+        <div className='w-full max-w-2xl px-4'>
+          {phase === 'setup' && (
+            <InterviewSetup onStart={handleStartInterview} />
+          )}
 
-        {phase === 'interview' && config && (
-          <ChatInterface
-            config={config}
-            messages={messages}
-            setMessages={setMessages}
-            onEndInterview={handleEndInterview}
-          />
-        )}
+          {phase === 'interview' && config && (
+            <ChatInterface
+              config={config}
+              messages={messages}
+              setMessages={setMessages}
+              onEndInterview={handleEndInterview}
+            />
+          )}
 
-        {phase === 'feedback' && feedback && (
-          <FeedbackView
-            feedback={feedback}
-            onRestart={handleRestartInterview}
-          />
-        )}
+          {phase === 'feedback' && feedback && (
+            <FeedbackView
+              feedback={feedback}
+              onRestart={handleRestartInterview}
+            />
+          )}
+        </div>
       </main>
     </div>
   );
