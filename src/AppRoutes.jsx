@@ -6,6 +6,7 @@ import { SignUpPage } from './Pages/SignUpPage';
 import { ForgotPassword } from './components/Auth/ForgotPassword';
 import { DashboardPage } from './Pages/DashboardPage';
 import { TextInterviewPage } from './Pages/TextInterviewPage';
+import { Notfound } from './Pages/NotFound';
 
 export const AppRoutes = () => {
   return (
@@ -16,7 +17,7 @@ export const AppRoutes = () => {
       <Route path='/forgot-password' element={<ForgotPassword />} />
       <Route path='/dashboard' element={<DashboardPage />} />
       <Route path='/text-interview/' element={<TextInterviewPage />} />
-      <Route path='*' element={<div>Page Not Found</div>} />
+      <Route path='*' element={<Notfound/>} />
     </Routes>
   );
 };
