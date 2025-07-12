@@ -34,7 +34,7 @@ export function LandingPage() {
             <Link to='/about' className='text-sm font-medium hover:underline'>
               About
             </Link>
-            <Link to='/login'>
+            <Link to='/signin'>
               <Button variant='outline' size='sm'>
                 Log in
               </Button>
@@ -86,7 +86,7 @@ export function LandingPage() {
                   </p>
                 </div>
                 <div className='flex flex-col gap-2 min-[400px]:flex-row'>
-                  <Link to='/signup'>
+                  <Link to='/dashboard'>
                     <Button className='bg-emerald-600 hover:bg-emerald-700'>
                       Get Started
                       <ArrowRight className='ml-2 h-4 w-4' />
@@ -506,10 +506,7 @@ export function LandingPage() {
                 </Button>
               </Link>
               <Link to='/demo'>
-                <Button
-                  variant='outline'
-                  className='border-white text-white hover:bg-emerald-700'
-                >
+                <Button className='bg-white text-emerald-600 hover:bg-emerald-50'>
                   Watch Demo
                 </Button>
               </Link>
