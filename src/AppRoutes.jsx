@@ -4,6 +4,8 @@ import { LandingPage } from './Pages/LandingPage';
 import { SignInPage } from './Pages/SignInPage';
 import { SignUpPage } from './Pages/SignUpPage';
 import { ForgotPassword } from './components/Auth/ForgotPassword';
+import { DashboardPage } from './Pages/DashboardPage';
+import { TextInterviewPage } from './Pages/TextInterviewPage';
 
 export const AppRoutes = () => {
   return (
@@ -12,6 +14,9 @@ export const AppRoutes = () => {
       <Route path='/signin' element={<SignInPage />} />
       <Route path='/signup' element={<SignUpPage />} />
       <Route path='/forgot-password' element={<ForgotPassword />} />
+      <Route path='/dashboard' element={<DashboardPage />} />
+      <Route path='/text-interview/' element={<TextInterviewPage />} />
+      <Route path='*' element={<div>Page Not Found</div>} />
     </Routes>
   );
 };
