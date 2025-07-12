@@ -13,7 +13,7 @@ export function ChatInterface({ config, messages, setMessages, onEndInterview })
   const [isLoading, setIsLoading] = useState(false)
   const [timeLeft, setTimeLeft] = useState(config.duration * 60) // Convert to seconds
   const [questionCount, setQuestionCount] = useState(0)
-  const messagesEndRef = useRef<HTMLDivElement>(null)
+  const messagesEndRef = useRef(null)
 
   // Timer effect
   useEffect(() => {
