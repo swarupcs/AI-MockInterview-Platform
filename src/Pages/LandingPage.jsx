@@ -109,7 +109,7 @@ export function LandingPage() {
               </div>
               <div className='mx-auto lg:mx-0 relative'>
                 <div className='relative h-[400px] w-full overflow-hidden rounded-xl bg-gradient-to-br from-emerald-50 to-teal-100 p-2 shadow-lg'>
-                  <image
+                  <img
                     src='/placeholder.svg?height=400&width=600'
                     alt='AI Interview Platform'
                     width={600}
