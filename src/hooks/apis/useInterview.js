@@ -1,4 +1,5 @@
 import {
+  fetchInterviewFeedback,
   fetchInterviewQuestion,
   fetchInterviewResponse,
 } from '@/apis/TextInterview/interview';
@@ -37,4 +38,22 @@ export const useInterviewResponse = () => {
     });
 
     return { isPending, isSuccess, error, fetchInterviewResponseMutation }
+}
+
+
+export const useInterviewFeedback = () => {
+  const {
+    isPending,
+    isSuccess,
+    error,
+    mutateAsync: fetchInterviewFeedbackMutation,
+  } = useMutation({
+    mutationFn: (data) => fetchInterviewFeedback(data),
+    onSuccess: (data) => {},
+    onError: (error) => {
+      console.error('Error fetching interview feedback:', error);
+    },
+  });
+
+  return { isPending, isSuccess, error, fetchInterviewFeedbackMutation };
 }
