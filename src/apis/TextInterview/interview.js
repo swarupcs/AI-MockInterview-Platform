@@ -19,3 +19,13 @@ export async function fetchInterviewResponse(data) {
         throw error;
     }
 }
+
+export async function fetchInterviewFeedback(data) {
+    try {
+        const response = await axiosConfig.post("/interview/feedback", data);
+        return response.data;
+    } catch (error) {
+        console.log("error in fetchInterviewFeedback:", error);
+        throw error;
+    }
+}
