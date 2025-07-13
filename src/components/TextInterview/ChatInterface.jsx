@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Send, Clock, StopCircle } from "lucide-react"
+import { useInterviewQuestion, useInterviewResponse } from "@/hooks/apis/useInterview"
 
 
 export function ChatInterface({ config, messages, setMessages, onEndInterview }) {
@@ -42,20 +43,18 @@ export function ChatInterface({ config, messages, setMessages, onEndInterview })
     }
   }, [])
 
+  const { isPending: isQuestionPending, fetchInterviewQuestionMutation } = useInterviewQuestion();
+  const { isPending: isResponsePending, fetchInterviewResponseMutation } = useInterviewResponse();
+
   const generateFirstQuestion = async () => {
     setIsLoading(true)
     try {
-      const response = await fetch("/api/interview/question", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          type: config.type,
-          difficulty: config.difficulty,
-          isFirst: true,
-        }),
-      })
+const data = await fetchInterviewQuestionMutation({
+  type: config.type,
+  difficulty: config.difficulty,
+  isFirst: true,
+});
 
-      const data = await response.json()
       const aiMessage = {
         id: `ai-${Date.now()}`,
         role: "assistant",
@@ -89,19 +88,13 @@ export function ChatInterface({ config, messages, setMessages, onEndInterview })
 
     try {
       // Get AI response
-      const response = await fetch("/api/interview/response", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          type: config.type,
-          difficulty: config.difficulty,
-          userResponse: input.trim(),
-          conversationHistory: messages,
-          questionCount,
-        }),
-      })
-
-      const data = await response.json()
+const data = await fetchInterviewResponseMutation({
+  type: config.type,
+  difficulty: config.difficulty,
+  userResponse: input.trim(),
+  conversationHistory: messages,
+  questionCount,
+});
 
       // Add AI response
       const aiMessage = {
